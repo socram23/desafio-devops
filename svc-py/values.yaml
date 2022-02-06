@@ -1,0 +1,34 @@
+replicaCount: 1
+
+image:
+  repository: socram99/dm-svc-py
+  pullPolicy: Always
+  tag: "1.0"
+
+configmap:
+  NAME: marcos
+
+nameOverride: ""
+fullnameOverride: ""
+
+service:
+  type: NodePort
+  name: http
+  port: 80
+  targetPort: 8000
+  name2: https
+  targetPort2: 8000
+  port2: 443
+
+ingress:
+  enabled: true
+  className: ""
+  annotations: {}
+  hosts:
+    - host: desafio-py.com
+      paths:
+        - path: /
+          pathType: Prefix
+
+
+

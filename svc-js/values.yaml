@@ -1,0 +1,34 @@
+replicaCount: 1
+
+image:
+  repository: socram99/dm-svc-js
+  pullPolicy: Always
+  tag: "1.0"
+
+configmap:
+  NAME: marcos
+
+nameOverride: ""
+fullnameOverride: ""
+
+service:
+  type: ClusterIP
+  name: http
+  port: 80
+  targetPort: 3000
+  name2: https
+  targetPort2: 3000
+  port2: 443
+
+ingress:
+  enabled: true
+  className: ""
+  annotations: {}
+  hosts:
+    - host: desafio-js.com
+      paths:
+        - path: /
+          pathType: Prefix
+
+
+
